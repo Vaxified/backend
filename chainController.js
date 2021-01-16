@@ -1,9 +1,9 @@
 // contactController.js
 // Import contact model
-Contact = require('./blockModel');
+Block = require('./blockModel');
 // Handle index actions
 exports.index = function (req, res) {
-    Contact.get(function (err, contacts) {
+    Block.get(function (err, blocks) {
         if (err) {
             res.json({
                 status: "error",
@@ -13,35 +13,26 @@ exports.index = function (req, res) {
         res.json({
             status: "success",
             message: "Contacts retrieved successfully",
-            data: contacts
+            data: blocks
         });
     });
 };
 // Handle create contact actions
 exports.new = function (req, res) {
-    var contact = new Contact();
-    contact.name = req.body.name ? req.body.name : contact.name;
-    contact.gender = req.body.gender;
-    contact.email = req.body.email;
-    contact.phone = req.body.phone;
+    var block = new Block();
+    block.name = req.body.name;
+  block.index = req.body.index;
+  block.firstVaxDate = req.body.firstVaxDate;
+  block.secondVaxDate = req.body.secondVaxDate;
+  block.previousHash = req.body.previousHash;
 // save the contact and check for errors
-    contact.save(function (err) {
+    block.save(function (err) {
         // if (err)
         //     res.json(err);
 res.json({
             message: 'New contact created!',
-            data: contact
+            data: block
         });
     });
 };
-// Handle view contact info
-exports.view = function (req, res) {
-    Contact.findById(req.params.contact_id, function (err, contact) {
-        if (err)
-            res.send(err);
-        res.json({
-            message: 'Contact details loading..',
-            data: contact
-        });
-    });
-};
+

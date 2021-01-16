@@ -1,8 +1,4 @@
-// contactModel.js
-var mongoose = require('mongoose');
-// Setup schema
-var contactSchema = mongoose.Schema({
-    name:{
+name:{
         type: String,
         required: true
     },
@@ -22,9 +18,9 @@ var contactSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-});
-// Export Contact model
-var Block = module.exports = mongoose.model('contact', contactSchema);
-module.exports.get = function (callback, limit) {
-    Block.find(callback).limit(limit);
-}
+
+block.name = req.body.name;
+  block.index = req.body.index;
+  block.firstVaxDate = req.body.firstVaxDate;
+  block.secondVaxDate = req.body.secondVaxDate;
+  block.previousHash = req.body.previousHash;
