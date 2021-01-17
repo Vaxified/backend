@@ -14,6 +14,7 @@ var contactController = require("./chainController");
 router
   .route("/contacts")
   .get(contactController.index)
-  .post(contactController.new);
+  .post(contactController.new)
+  .delete(contactController.delete);
 // Export API routes
 module.exports = router;

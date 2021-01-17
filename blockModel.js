@@ -14,10 +14,9 @@ var contactSchema = mongoose.Schema({
   previousHash: {
     type: String,
   },
-//   hash:{
-//     type: String,
-//     require: true,
-//   }
+  hash:{
+    type: String,
+  }
 });
 // Export Contact model
 var Block = (module.exports = mongoose.model("contact", contactSchema));

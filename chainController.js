@@ -2,10 +2,10 @@
 // Import contact model
 const SHA256 = require('crypto-js/sha256');
 const express = require('express');
-Block = require("./blockModel");
+Blockchain = require("./blockModel");
 // Handle index actions
 exports.index = function (req, res) {
-  Block.get(function (err, blocks) {
+  Blockchain.get(function (err, blocks) {
     if (err) {
       res.json({
         status: "error",
@@ -14,22 +14,21 @@ exports.index = function (req, res) {
     }
     res.json({
       data: blocks,
-      message:"contacts found"
     });
   });
 };
 
 // Handle create contact actions
 exports.new = async function (req, res)  {
-  chain = await Block.find({});
+  chain = await Blockchain.find({});
   chainLenght = Object.keys(chain).length;
   previousHash = (chain[chainLenght-1] != null? chain[chainLenght-1].hash: "")
-  console.log(chain)
+  console.log(previousHash)
   
 
   
 
-  var block = new Block();
+  var block = new Blockchain();
   block.name = req.body.name;
   block.index = req.body.index;
   block.date = req.body.date
@@ -45,4 +44,7 @@ exports.new = async function (req, res)  {
   });
 };
 
+exports.delete = function(req, res){
+  Blockchain.collection.remove({})
+}
 
