@@ -51,14 +51,17 @@ exports.index = function (req, res) {
 // Handle create contact actions
 exports.new = async function (req, res) {
   chain = await Blockchain.find({});
-  chainLenght = Object.keys(chain).length;
+  chainLength = Object.keys(chain).length;
   previousHash =
-    chain[chainLenght - 1] != null ? chain[chainLenght - 1].hash : "";
+    chain[chainLength - 1] != null ? chain[chainLength - 1].hash : "";
 
   var block = new Blockchain();
   block.name = req.body.name;
-  block.index = chainLenght;
+  block.index = chainLength;
   block.date = req.body.date;
+  block.dob = req.body.dob;
+  block.product = req.body.product
+  block.patientNumber = req.body.patientNumber
   block.previousHash = previousHash;
   block.hash = calculateHash(
     block.index,

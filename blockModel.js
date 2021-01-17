@@ -5,6 +5,12 @@ var contactSchema = mongoose.Schema({
   name: {
     type: String,
   },
+  dob:{
+      type: String
+  },
+  product:{
+      type: String
+  },
   index: {
     type: Number,
   },
