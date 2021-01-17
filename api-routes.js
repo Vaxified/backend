@@ -12,9 +12,9 @@ router.get("/", function (req, res) {
 var contactController = require("./chainController");
 // Contact routes
 router
-  .route("/contacts")
-  .get(contactController.index)
+  .route("/adddata")
   .post(contactController.new)
-  .delete(contactController.delete);
+  .delete(contactController.delete)
+router.route("/getdata").get(contactController.index);
 // Export API routes
 module.exports = router;
