@@ -11,6 +11,9 @@ var contactSchema = mongoose.Schema({
   product:{
       type: String
   },
+  patientNumber:{
+      type: Number
+  },
   index: {
     type: Number,
   },
