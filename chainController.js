@@ -18,6 +18,10 @@ exports.index = function (req, res) {
   });
 };
 
+let calculateHash = (index,previousHash,date, name) =>{
+  return SHA256(index + previousHash + name + JSON.stringify(date)).toString();
+}
+
 // Handle create contact actions
 exports.new = async function (req, res)  {
   chain = await Blockchain.find({});
@@ -33,9 +37,7 @@ exports.new = async function (req, res)  {
   block.index = req.body.index;
   block.date = req.body.date
   block.previousHash = previousHash;
-  block.hash = ()=>{
-      return SHA256(block.name + block.index + block.date).toString();
-  }
+  block.hash = calculateHash(block.index,block.previousHash,block.date, block.name)
   // save the contact and check for errors
   block.save(function (err) {
     res.json({
