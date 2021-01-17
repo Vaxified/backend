@@ -29,7 +29,7 @@ exports.index = function (req, res) {
         chainValidity = false;
       }
     }
-    chainValidity = (chainValidity = false) ? false : true;
+    chainValidity = (chainValidity == false) ? false : true;
 
     if (err) {
       res.json({
