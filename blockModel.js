@@ -10,12 +10,9 @@ var contactSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  firstVaxDate: {
-    type: Date,
-    default: Date.now,
-  },
-  secondVaxDate: {
-    type: Date,
+  date:{
+      type: Object,
+      required:true,
   },
   previousHash: {
     type: String,
