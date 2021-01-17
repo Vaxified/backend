@@ -27,14 +27,14 @@ exports.new = async function (req, res)  {
   chain = await Blockchain.find({});
   chainLenght = Object.keys(chain).length;
   previousHash = (chain[chainLenght-1] != null? chain[chainLenght-1].hash: "")
-  console.log(previousHash)
+
   
 
   
 
   var block = new Blockchain();
   block.name = req.body.name;
-  block.index = req.body.index;
+  block.index = chainLenght;
   block.date = req.body.date
   block.previousHash = previousHash;
   block.hash = calculateHash(block.index,block.previousHash,block.date, block.name)
