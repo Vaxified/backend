@@ -4,19 +4,15 @@ var mongoose = require("mongoose");
 var contactSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true,
   },
   index: {
     type: Number,
-    required: true,
   },
   date:{
       type: Object,
-      required:true,
   },
   previousHash: {
     type: String,
-    required: true,
   },
 //   hash:{
 //     type: String,
