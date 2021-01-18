@@ -5,6 +5,9 @@ var contactSchema = mongoose.Schema({
   name: {
     type: String,
   },
+  password:{
+    type: String,
+  },
   dob:{
       type: String
   },
