@@ -17,7 +17,7 @@ var contactSchema = mongoose.Schema({
   index: {
     type: Number,
   },
-  date:{
+  doses:{
       type: Object,
   },
   previousHash: {

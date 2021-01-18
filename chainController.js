@@ -5,8 +5,8 @@ const express = require("express");
 Blockchain = require("./blockModel");
 // Handle index actions
 
-let calculateHash = (index, previousHash, date, name) => {
-  return SHA256(index + previousHash + name + JSON.stringify(date)).toString();
+let calculateHash = (index, previousHash, doses, name) => {
+  return SHA256(index + previousHash + name + JSON.stringify(doses)).toString();
 };
 
 exports.index = function (req, res) {
@@ -20,7 +20,7 @@ exports.index = function (req, res) {
         calculateHash(
           currentBlock.index,
           currentBlock.previousHash,
-          currentBlock.date,
+          currentBlock.doses,
           currentBlock.name
         )
       ) {
@@ -58,7 +58,7 @@ exports.new = async function (req, res) {
   var block = new Blockchain();
   block.name = req.body.name;
   block.index = chainLength;
-  block.date = req.body.date;
+  block.doses = req.body.doses;
   block.dob = req.body.dob;
   block.product = req.body.product
   block.patientNumber = req.body.patientNumber
@@ -66,7 +66,7 @@ exports.new = async function (req, res) {
   block.hash = calculateHash(
     block.index,
     block.previousHash,
-    block.date,
+    block.doses,
     block.name
   );
   // save the contact and check for errors
